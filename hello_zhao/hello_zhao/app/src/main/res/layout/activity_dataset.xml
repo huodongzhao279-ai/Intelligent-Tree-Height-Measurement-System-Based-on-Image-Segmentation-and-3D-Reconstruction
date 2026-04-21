@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    tools:context="com.google.ar.core.examples.java.Tree.DataList">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+<!--手动修改ip-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/ipLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IP 地址:"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:layout_marginStart="16dp" />
+
+            <EditText
+                android:id="@+id/ipEditText"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:hint="请输入 IP 地址"
+                android:inputType="textUri"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:backgroundTint="#ffffff"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="高度数据"
+            android:textColor="#ffffff"
+            android:textAppearance="@style/ToolbarTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="批量管理"
+            android:background="@color/base_color"
+            android:textColor="#ffffff"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:padding="16dp"
+            android:layout_gravity="end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"/>
+    </com.google.android.material.appbar.MaterialToolbar>
+    <CheckBox
+        android:id="@+id/select_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B3B3B3"
+        android:padding="10dp"
+        android:text="全选"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar"/>
+    <TextView
+        android:id="@+id/empty_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        app:layout_constraintTop_toTopOf="@id/list_layout"
+        app:layout_constraintBottom_toBottomOf="@id/list_layout"
+        app:layout_constraintStart_toStartOf="@id/list_layout"
+        app:layout_constraintEnd_toEndOf="@id/list_layout"/>
+
+    <LinearLayout
+        android:id="@+id/list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/multi_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/select_all">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true">
+
+            <requestFocus />
+        </ListView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/multi_toolbar">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/progress_num"
+            />
+        <TextView
+            android:id="@+id/progress_num"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/multi_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/camera_button"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone">
+        <Button
+            android:id="@+id/multi_upload_button"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:text="上传计算"
+            android:background="@drawable/btn_upload_selector"
+            android:onClick="connectServer"
+            />
+        <Button
+            android:id="@+id/multi_export_button"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:text="导出数据"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_export_selector"
+            android:onClick="ExportData"
+            />
+        <Button
+            android:id="@+id/multi_delete_botton"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:text="删除数据"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_delete_selector"
+            android:onClick="deleteData"/>
+        <Button
+            android:id="@+id/delete_result_botton"
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="删除结果"
+            android:background="@drawable/btn_deleteres_selector"
+            android:onClick="deleteResult"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/base_color"
+        android:text="获取数据"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,49 @@
+# TreeHeight + SLAM3R 项目依赖
+# 安装命令: pip install -r requirements_slam3r.txt
+
+# ============ 核心深度学习框架 ============
+# 根据你的 CUDA 版本安装 PyTorch
+# CPU 版本: pip install torch torchvision torchaudio
+# CUDA 11.8: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# CUDA 12.1: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ============ 图像处理 ============
+numpy>=1.20.0
+opencv-python>=4.5.5.64
+Pillow
+
+# ============ 点云处理 ============
+open3d>=0.16.0
+
+# ============ Web 框架 ============
+flask
+werkzeug
+
+# ============ SAM 分割模型 ============
+segment-anything
+
+# ============ SLAM3R 依赖 ============
+roma
+gradio
+matplotlib
+tqdm
+scipy
+einops
+trimesh
+tensorboard
+pyglet<2
+huggingface-hub[torch]>=0.22
+viser
+
+# ============ 可选依赖 ============
+# imageio[ffmpeg]
+# scikit-image
+# pyrender
+
+# ============ 注意事项 ============
+# 1. SLAM3R 需要 Python 3.11
+# 2. 如果有 NVIDIA GPU，建议安装 xformers 加速:
+#    pip install xformers
+# 3. SLAM3R 模型权重会自动从 HuggingFace 下载

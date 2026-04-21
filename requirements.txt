@@ -1,0 +1,29 @@
+# TreeHeight 项目依赖
+# 安装命令: pip install -r requirements.txt
+
+# 核心深度学习框架
+torch>=1.8.1
+torchvision>=0.9.1
+
+# 图像处理
+numpy>=1.20.0
+opencv-python>=4.5.5.64
+Pillow
+
+# 点云处理
+open3d>=0.16.0
+
+# 数据增强
+albumentations
+
+# Web 框架
+flask
+werkzeug
+
+# 机器学习工具
+scikit-learn
+tqdm
+
+# SAM 分割模型 (需要单独安装)
+# pip install git+https://github.com/facebookresearch/segment-anything.git
+segment-anything
